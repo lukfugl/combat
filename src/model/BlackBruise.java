@@ -1,6 +1,6 @@
 package model;
 
-public class BlackBruise extends Weapon {
+public class BlackBruise {
 	private boolean heroic;
 
 	public BlackBruise(boolean heroic) {
