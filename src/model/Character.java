@@ -38,6 +38,12 @@ public class Character {
 				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
 	}
 
+	// B75
+	public double whiteMissChance() {
+		// TODO: EXPAND
+		return 9.38;
+	}
+
 	// B146
 	public double whiteCritMultiplier() {
 		// TODO: EXPAND

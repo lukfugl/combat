@@ -5,16 +5,16 @@ public class MainHand extends WeaponSlot {
 		super(weapon);
 	}
 
+	// B79
+	public double dodgeChance() {
+		// TODO: EXPAND
+		return (double) 0;
+	}
+
 	// B778
 	public double whiteCritRate() {
 		// TODO: EXPAND
 		return 48.75;
-	}
-
-	// B82
-	public double whiteHitChance() {
-		// TODO: EXPAND
-		return 0.91;
 	}
 	
 	// B927

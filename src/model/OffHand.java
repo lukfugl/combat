@@ -14,16 +14,16 @@ public class OffHand extends WeaponSlot {
 		return 0.5 + 0.05 * character.dualWieldSpecialization();
 	}
 
+	// B80
+	public double dodgeChance() {
+		// TODO: EXPAND
+		return (double) 0;
+	}
+
 	// B779
 	public double whiteCritRate() {
 		// TODO: EXPAND
 		return 48.75;
-	}
-
-	// B83
-	public double whiteHitChance() {
-		// TODO: EXPAND
-		return 0.91;
 	}
 
 	// B928

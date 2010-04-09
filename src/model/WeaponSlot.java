@@ -27,12 +27,16 @@ public abstract class WeaponSlot {
 	}
 
 	public double whiteMultiplier(Character character) {
-		return whiteHitChance() - 0.06 + 0.01 * whiteCritRate() * (character.whiteCritMultiplier() - 1);
+		return whiteHitChance(character) - 0.06 + 0.01 * whiteCritRate() * (character.whiteCritMultiplier() - 1);
 	}
 
-	public abstract double whiteCritRate();
+	public double whiteHitChance(Character character) {
+		return 0.01 * (100 - dodgeChance() - character.whiteMissChance());
+	}
 
-	public abstract double whiteHitChance();
+	public abstract double dodgeChance();
+
+	public abstract double whiteCritRate();
 
 	public abstract double whiteAttacksPerSecond(Character character);
 
