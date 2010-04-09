@@ -1,19 +1,24 @@
 package model;
 
+import model.Weapon.WeaponType;
+
 public class Character {
 	private BlackBruise blackBruise;
 	private BlackBruise heroicBlackBruise;
 	WeaponSlot mainHand;
 	WeaponSlot offHand;
+	Race race;
 
 	public Character() {
 		blackBruise = new BlackBruise(false);
 		heroicBlackBruise = new BlackBruise(true);
-		
+
 		// B44/B46
-		mainHand = new MainHand(new Weapon(2.6, 205.58));
+		mainHand = new MainHand(new Weapon(2.6, 205.58, WeaponType.Axe));
 		// B45/B47
-		offHand = new OffHand(new Weapon(1.5, 178.67));
+		offHand = new OffHand(new Weapon(1.5, 178.67, WeaponType.Sword));
+
+		race = Race.Human;
 	}
 
 	// B1083
@@ -36,6 +41,21 @@ public class Character {
 		return mainHand.physicalDPS(this) + offHand.physicalDPS(this)
 				+ ruptureDPS() + sinisterStrikeDPS() + eviscerateDPS()
 				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
+	}
+
+	// B7
+	public int expertiseRatingFromGear() {
+		return 132;
+	}
+
+	// WeaponExpertise
+	public int weaponExpertise() {
+		return 2;
+	}
+
+	public double expertise(Weapon weapon) {
+		return expertiseRatingFromGear() * 4 / 32.78998947 + weaponExpertise()
+				* 5 + race.expertise(weapon);
 	}
 
 	// B75
