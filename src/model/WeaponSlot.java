@@ -6,10 +6,8 @@ public abstract class WeaponSlot {
 	}
 
 	public double rawPhysicalDPS(Character character) {
-		return (whiteDPS(character) + tinyAbominationInAJarDPS(character))
-				* averageMitigation(character)
-				* character.bloodFrenzy()
-				* character.hysteria();
+		return whiteDPS(character) * averageMitigation(character)
+				* character.bloodFrenzy() * character.hysteria();
 	}
 
 	public double whiteDPS(Character character) {
@@ -23,8 +21,6 @@ public abstract class WeaponSlot {
 	public abstract double whiteMultiplier(Character character);
 
 	public abstract double baseDamage(Character character);
-
-	public abstract double tinyAbominationInAJarDPS(Character character);
 
 	public abstract double averageMitigation(Character character);
 }

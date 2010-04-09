@@ -19,12 +19,6 @@ public class MainHand extends WeaponSlot {
 		return 2007.4;
 	}
 
-	// B953
-	public double tinyAbominationInAJarDPS(Character character) {
-		// TODO: EXPAND
-		return (double) 0;
-	}
-
 	// B1052
 	public double averageMitigation(Character character) {
 		// TODO: EXPAND

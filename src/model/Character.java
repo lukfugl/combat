@@ -32,7 +32,7 @@ public class Character {
 	private double physicalDPS() {
 		return mainHand.physicalDPS(this) + offHand.physicalDPS(this)
 				+ ruptureDPS() + sinisterStrikeDPS() + eviscerateDPS()
-				+ KillingSpree.dps(this);
+				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
 	}
 
 	// ... * B971
@@ -64,7 +64,7 @@ public class Character {
 	public double rawWhiteDPS() {
 		return mainHand.rawPhysicalDPS(this) + offHand.rawPhysicalDPS(this)
 				+ rawSinisterStrikeDPS() + rawEviscerateDPS()
-				+ KillingSpree.rawDPS(this);
+				+ KillingSpree.rawDPS(this) + TinyAbomination.rawDPS(this);
 	}
 
 	// B990

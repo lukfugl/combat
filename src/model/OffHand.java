@@ -19,12 +19,6 @@ public class OffHand extends WeaponSlot {
 		return 1.59;
 	}
 
-	// B957
-	public double tinyAbominationInAJarDPS(Character character) {
-		// TODO: EXPAND
-		return (double) 0;
-	}
-
 	// B1073
 	public double averageMitigation(Character character) {
 		// TODO: EXPAND
