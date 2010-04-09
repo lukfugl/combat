@@ -41,14 +41,14 @@ public class Character {
 	// B786
 	public double attackPower() {
 		// TODO: EXPAND
-		return 7929.9;
+		return 7930.01;
 	}
 
 	// ... * B971
 	private double rawEviscerateDPS() {
 		// TODO: EXPAND
 		return mainHand.averageMitigation(this) * bloodFrenzy() * hysteria()
-				* 770.26;
+				* 752;
 	}
 
 	private double eviscerateDPS() {
@@ -59,7 +59,7 @@ public class Character {
 	private double rawSinisterStrikeDPS() {
 		// TODO: EXPAND
 		return mainHand.averageMitigation(this) * bloodFrenzy() * hysteria()
-				* 2022.75;
+				* 1983.67;
 	}
 
 	private double sinisterStrikeDPS() {
@@ -79,7 +79,7 @@ public class Character {
 	// B990
 	private double rawPoisonDPS() {
 		// TODO: EXPAND
-		return 2479.59;
+		return 2491.97;
 	}
 
 	// B1080

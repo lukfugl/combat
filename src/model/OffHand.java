@@ -17,18 +17,18 @@ public class OffHand extends WeaponSlot {
 	// B928
 	public double whiteAttacksPerSecond(Character character) {
 		// TODO: EXPAND
-		return 1.55;
+		return 1.57;
 	}
 
 	// B948
 	public double whiteMultiplier(Character character) {
 		// TODO: EXPAND
-		return 1.59;
+		return 1.56;
 	}
 
 	// B1073
 	public double averageMitigation(Character character) {
 		// TODO: EXPAND
-		return 0.75;
+		return 0.74;
 	}
 }
