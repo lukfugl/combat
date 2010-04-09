@@ -26,9 +26,15 @@ public abstract class WeaponSlot {
 		return weapon.speed * (weapon.dps + character.attackPower() / 14);
 	}
 
-	public abstract double whiteAttacksPerSecond(Character character);
+	public double whiteMultiplier(Character character) {
+		return whiteHitChance() - 0.06 + 0.01 * whiteCritRate() * (character.whiteCritMultiplier() - 1);
+	}
 
-	public abstract double whiteMultiplier(Character character);
+	public abstract double whiteCritRate();
+
+	public abstract double whiteHitChance();
+
+	public abstract double whiteAttacksPerSecond(Character character);
 
 	public abstract double averageMitigation(Character character);
 }
