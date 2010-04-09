@@ -1,6 +1,10 @@
 package model;
 
 public class MainHand extends WeaponSlot {
+	public MainHand(Weapon weapon) {
+		super(weapon);
+	}
+	
 	// B927
 	public double whiteAttacksPerSecond(Character character) {
 		// TODO: EXPAND
@@ -11,12 +15,6 @@ public class MainHand extends WeaponSlot {
 	public double whiteMultiplier(Character character) {
 		// TODO: EXPAND
 		return 1.59;
-	}
-
-	// B943
-	public double baseDamage(Character character) {
-		// TODO: EXPAND
-		return 2007.4;
 	}
 
 	// B1052

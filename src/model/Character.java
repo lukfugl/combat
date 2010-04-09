@@ -3,14 +3,17 @@ package model;
 public class Character {
 	private BlackBruise blackBruise;
 	private BlackBruise heroicBlackBruise;
-	MainHand mainHand;
-	OffHand offHand;
+	WeaponSlot mainHand;
+	WeaponSlot offHand;
 
 	public Character() {
 		blackBruise = new BlackBruise(false);
 		heroicBlackBruise = new BlackBruise(true);
-		mainHand = new MainHand();
-		offHand = new OffHand();
+		
+		// B44/B46
+		mainHand = new MainHand(new Weapon(2.6, 205.58));
+		// B45/B47
+		offHand = new OffHand(new Weapon(1.5, 178.67));
 	}
 
 	// B1083
@@ -33,6 +36,12 @@ public class Character {
 		return mainHand.physicalDPS(this) + offHand.physicalDPS(this)
 				+ ruptureDPS() + sinisterStrikeDPS() + eviscerateDPS()
 				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
+	}
+
+	// B786
+	public double attackPower() {
+		// TODO: EXPAND
+		return 7929.9;
 	}
 
 	// ... * B971
@@ -101,5 +110,11 @@ public class Character {
 	public double ferociousInspiration() {
 		// TODO: EXPAND
 		return 1.03;
+	}
+
+	// DWSpec
+	public int dualWieldSpecialization() {
+		// TODO: EXPAND
+		return 5;
 	}
 }

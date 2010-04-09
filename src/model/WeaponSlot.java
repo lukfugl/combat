@@ -1,6 +1,12 @@
 package model;
 
 public abstract class WeaponSlot {
+	public Weapon weapon;
+
+	public WeaponSlot(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
 	public double physicalDPS(Character character) {
 		return character.ferociousInspiration() * rawPhysicalDPS(character);
 	}
@@ -16,11 +22,13 @@ public abstract class WeaponSlot {
 				* (1 + 0.2 * KillingSpree.uptime());
 	}
 
+	public double baseDamage(Character character) {
+		return weapon.speed * (weapon.dps + character.attackPower() / 14);
+	}
+
 	public abstract double whiteAttacksPerSecond(Character character);
 
 	public abstract double whiteMultiplier(Character character);
-
-	public abstract double baseDamage(Character character);
 
 	public abstract double averageMitigation(Character character);
 }
