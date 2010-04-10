@@ -18,16 +18,14 @@ public abstract class KillingSpree {
 	// B984 * ...
 	private static double mainHandDPS(Character character) {
 		// TODO: EXPAND
-		return 266.15
-				* character.mainHand.averageMitigation(character)
+		return 266.15 * character.mainHand.averageMitigation(character)
 				* character.bloodFrenzy() * character.hysteria();
 	}
 
 	// B985 * ...
 	private static double offHandDPS(Character character) {
 		// TODO: EXPAND
-		return 171.53
-				* character.offHand.averageMitigation(character)
+		return 171.53 * character.offHand.averageMitigation(character)
 				* character.bloodFrenzy() * character.hysteria();
 	}
 }
