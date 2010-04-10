@@ -1,12 +1,16 @@
 package model;
 
+import abilities.Eviscerate;
+import abilities.HackAndSlash;
+import abilities.Rupture;
+import abilities.SinisterStrike;
 import model.Weapon.WeaponType;
 
 public class Character {
 	private BlackBruise blackBruise;
 	private BlackBruise heroicBlackBruise;
-	WeaponSlot mainHand;
-	WeaponSlot offHand;
+	public WeaponSlot mainHand;
+	public WeaponSlot offHand;
 	Race race;
 
 	public Character() {
@@ -39,9 +43,9 @@ public class Character {
 
 	private double physicalDPS() {
 		return mainHand.autoAttackDPS(this) + offHand.autoAttackDPS(this)
-				+ ruptureDPS() + hackAndSlashDPS() + sinisterStrikeDPS()
-				+ eviscerateDPS() + KillingSpree.dps(this)
-				+ TinyAbomination.dps(this);
+				+ Rupture.dps(this) + HackAndSlash.dps(this)
+				+ SinisterStrike.dps(this) + Eviscerate.dps(this)
+				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
 	}
 
 	// B7
@@ -111,93 +115,10 @@ public class Character {
 		return 2.35;
 	}
 
-	public double hackAndSlashSwingsPerSecond() {
-		double eligibleHitsPerSecond = 0;
-		if (mainHand.weapon.hackAndSlash())
-			eligibleHitsPerSecond += mainHand.autoAttackHitsPerSecond(this)
-					+ sinisterStrikesPerSecond() + smallRupturesPerSecond()
-					+ bigRupturesPerSecond() + smallEvisceratesPerSecond()
-					+ bigEvisceratesPerSecond()
-					+ KillingSpree.hitsPerSecond(this)
-					+ TinyAbomination.mainHandProcs(this);
-		if (offHand.weapon.hackAndSlash())
-			eligibleHitsPerSecond += offHand.autoAttackHitsPerSecond(this)
-					+ KillingSpree.hitsPerSecond(this)
-					+ TinyAbomination.offHandProcs(this);
-		return 0.01 * hackAndSlash() * eligibleHitsPerSecond;
-	}
-
-	public double rawHackAndSlashDPS() {
-		return hackAndSlashSwingsPerSecond() * mainHand.baseDamage(this)
-				* mainHand.whiteMultiplier(this)
-				* (1 + 0.2 * KillingSpree.uptime())
-				* mainHand.averageMitigation(this) * bloodFrenzy() * hysteria();
-	}
-
-	private double hackAndSlashDPS() {
-		return ferociousInspiration() * rawHackAndSlashDPS();
-	}
-
-	// B935
-	public double bigEvisceratesPerSecond() {
-		// TODO: EXPAND
-		return (double) 0;
-	}
-
-	// B934
-	public double smallEvisceratesPerSecond() {
-		// TODO: EXPAND
-		return 0.06;
-	}
-
-	// ... * B971
-	private double rawEviscerateDPS() {
-		// TODO: EXPAND
-		return mainHand.averageMitigation(this) * bloodFrenzy() * hysteria()
-				* 752;
-	}
-
-	private double eviscerateDPS() {
-		return ferociousInspiration() * rawEviscerateDPS();
-	}
-
-	// B931
-	public double sinisterStrikesPerSecond() {
-		// TODO: EXPAND
-		return 0.37;
-	}
-
-	// ... * B961
-	private double rawSinisterStrikeDPS() {
-		// TODO: EXPAND
-		return mainHand.averageMitigation(this) * bloodFrenzy() * hysteria()
-				* 1983.67;
-	}
-
-	private double sinisterStrikeDPS() {
-		return ferociousInspiration() * rawSinisterStrikeDPS();
-	}
-
-	// B933
-	public double bigRupturesPerSecond() {
-		// TODO: EXPAND
-		return (double) 0;
-	}
-
-	// B932
-	public double smallRupturesPerSecond() {
-		// TODO: EXPAND
-		return (double) 0;
-	}
-
-	private double ruptureDPS() {
-		return ferociousInspiration() * ruptureRawDPS();
-	}
-
 	public double rawWhiteDPS() {
 		return mainHand.rawAutoAttackDPS(this) + offHand.rawAutoAttackDPS(this)
-				+ rawHackAndSlashDPS() + rawSinisterStrikeDPS()
-				+ rawEviscerateDPS() + KillingSpree.rawDPS(this)
+				+ HackAndSlash.rawDPS(this) + SinisterStrike.rawDPS(this)
+				+ Eviscerate.rawDPS(this) + KillingSpree.rawDPS(this)
 				+ TinyAbomination.rawDPS(this);
 	}
 
@@ -205,12 +126,6 @@ public class Character {
 	private double rawPoisonDPS() {
 		// TODO: EXPAND
 		return 2491.97;
-	}
-
-	// B1080
-	private double ruptureRawDPS() {
-		// TODO: EXPAND
-		return (double) 0;
 	}
 
 	// Kings
