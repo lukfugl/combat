@@ -64,6 +64,34 @@ public class Character {
 		return 9.38;
 	}
 
+	// B98
+	public double whiteCritChanceFromGear() {
+		// TODO: EXPAND
+		return 15.51;
+	}
+
+	public double whiteCritChanceFromTalents(Weapon weapon) {
+		double critChance = malice();
+		if (weapon.type == WeaponType.Dagger || weapon.type == WeaponType.Fist)
+			critChance += closeQuartersCombat();
+		return critChance;
+	}
+
+	public double whiteCritChanceFromBuffs() {
+		return leaderOfThePack() + heartOfTheCrusader();
+	}
+
+	public double whiteCritChanceNoAgility(Weapon weapon) {
+		return whiteCritChanceFromGear() + whiteCritChanceFromBuffs()
+				+ whiteCritChanceFromTalents(weapon) - 4.8;
+	}
+
+	// B712
+	public double whiteCritChanceFromAgility() {
+		// TODO: EXPAND
+		return 25.04;
+	}
+
 	// B146
 	public double whiteCritMultiplier() {
 		// TODO: EXPAND
@@ -120,6 +148,23 @@ public class Character {
 		return (double) 0;
 	}
 
+	// Kings
+	public double kings() {
+		return 1.1;
+	}
+
+	// HotC
+	private int heartOfTheCrusader() {
+		// TODO: EXPAND
+		return 3;
+	}
+
+	// LotP
+	private int leaderOfThePack() {
+		// TODO: EXPAND
+		return 5;
+	}
+
 	// EbonPlaguebringer
 	private double ebonPlaguebringer() {
 		// TODO: EXPAND
@@ -146,6 +191,18 @@ public class Character {
 
 	// DWSpec
 	public int dualWieldSpecialization() {
+		// TODO: EXPAND
+		return 5;
+	}
+
+	// CQC
+	public int closeQuartersCombat() {
+		// TODO: EXPAND
+		return 0;
+	}
+
+	// Malice
+	public int malice() {
 		// TODO: EXPAND
 		return 5;
 	}

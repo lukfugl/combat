@@ -14,12 +14,6 @@ public class OffHand extends WeaponSlot {
 		return 0.5 + 0.05 * character.dualWieldSpecialization();
 	}
 
-	// B779
-	public double whiteCritRate() {
-		// TODO: EXPAND
-		return 48.75;
-	}
-
 	// B928
 	public double whiteAttacksPerSecond(Character character) {
 		// TODO: EXPAND

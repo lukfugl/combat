@@ -1,5 +1,12 @@
 package model;
 
+import trinkets.DarkMatter;
+import trinkets.DarkmoonCardGreatness;
+import trinkets.DeathbringersWill;
+import trinkets.DeathsVerdict;
+import trinkets.HeroicDeathbringersWill;
+import trinkets.HeroicDeathsVerdict;
+
 public abstract class WeaponSlot {
 	public Weapon weapon;
 
@@ -27,7 +34,8 @@ public abstract class WeaponSlot {
 	}
 
 	public double whiteMultiplier(Character character) {
-		return whiteHitChance(character) - 0.06 + 0.01 * whiteCritRate()
+		return whiteHitChance(character) - 0.06 + 0.01
+				* whiteCritChance(character)
 				* (character.whiteCritMultiplier() - 1);
 	}
 
@@ -40,7 +48,34 @@ public abstract class WeaponSlot {
 		return Math.max(6.5 - 0.25 * character.expertise(this.weapon), 0);
 	}
 
-	public abstract double whiteCritRate();
+	public double whiteCritChance(Character character) {
+		return baseWhiteCritChance(character)
+				+ whiteCritChanceFromProcs(character);
+	}
+
+	public double baseWhiteCritChance(Character character) {
+		return Math.min(character.whiteCritChanceNoAgility(this.weapon)
+				+ character.whiteCritChanceFromAgility(),
+				whiteCritCap(character));
+	}
+
+	public double whiteCritCap(Character character) {
+		return 100 * whiteHitChance(character) - 24;
+	}
+
+	public double critCapRoom(Character character) {
+		return whiteCritCap(character) - baseWhiteCritChance(character);
+	}
+
+	public double whiteCritChanceFromProcs(Character character) {
+		return DarkMatter.critChance(character, this)
+				+ DarkmoonCardGreatness.critChance(character, this)
+				+ DeathsVerdict.critChance(character, this)
+				+ HeroicDeathsVerdict.critChance(character, this)
+				+ DeathbringersWill.critChance(character, this)
+				+ HeroicDeathbringersWill.critChance(character, this)
+				+ Mongoose.critChance(character, this);
+	}
 
 	public abstract double whiteAttacksPerSecond(Character character);
 

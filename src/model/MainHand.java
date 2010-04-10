@@ -5,12 +5,6 @@ public class MainHand extends WeaponSlot {
 		super(weapon);
 	}
 
-	// B778
-	public double whiteCritRate() {
-		// TODO: EXPAND
-		return 48.75;
-	}
-
 	// B927
 	public double whiteAttacksPerSecond(Character character) {
 		// TODO: EXPAND
