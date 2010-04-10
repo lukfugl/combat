@@ -14,19 +14,16 @@ public abstract class WeaponSlot {
 		this.weapon = weapon;
 	}
 
-	public double physicalDPS(Character character) {
-		return character.ferociousInspiration() * rawPhysicalDPS(character);
+	public double autoAttackDPS(Character character) {
+		return character.ferociousInspiration() * rawAutoAttackDPS(character);
 	}
 
-	public double rawPhysicalDPS(Character character) {
-		return whiteDPS(character) * averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
-	}
-
-	public double whiteDPS(Character character) {
+	public double rawAutoAttackDPS(Character character) {
 		return baseDamage(character) * whiteMultiplier(character)
-				* whiteAttacksPerSecond(character)
-				* (1 + 0.2 * KillingSpree.uptime());
+				* autoAttackSwingsPerSecond(character)
+				* (1 + 0.2 * KillingSpree.uptime())
+				* averageMitigation(character) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 
 	public double baseDamage(Character character) {
@@ -77,16 +74,12 @@ public abstract class WeaponSlot {
 				+ Mongoose.critChance(character, this);
 	}
 
-	public double whiteAttacksPerSecond(Character character) {
-		return baseAttacksPerSecond(character);
-	}
-
-	public double baseAttacksPerSecond(Character character) {
+	public double autoAttackSwingsPerSecond(Character character) {
 		return character.totalSpeedMultiplier() / weapon.speed;
 	}
 
-	public double baseHitsPerSecond(Character character) {
-		return baseAttacksPerSecond(character) * whiteHitChance(character);
+	public double autoAttackHitsPerSecond(Character character) {
+		return autoAttackSwingsPerSecond(character) * whiteHitChance(character);
 	}
 
 	public abstract double averageMitigation(Character character);

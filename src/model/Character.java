@@ -38,7 +38,7 @@ public class Character {
 	}
 
 	private double physicalDPS() {
-		return mainHand.physicalDPS(this) + offHand.physicalDPS(this)
+		return mainHand.autoAttackDPS(this) + offHand.autoAttackDPS(this)
 				+ ruptureDPS() + hackAndSlashDPS() + sinisterStrikeDPS()
 				+ eviscerateDPS() + KillingSpree.dps(this)
 				+ TinyAbomination.dps(this);
@@ -114,14 +114,14 @@ public class Character {
 	public double hackAndSlashSwingsPerSecond() {
 		double eligibleHitsPerSecond = 0;
 		if (mainHand.weapon.hackAndSlash())
-			eligibleHitsPerSecond += mainHand.baseHitsPerSecond(this)
+			eligibleHitsPerSecond += mainHand.autoAttackHitsPerSecond(this)
 					+ sinisterStrikesPerSecond() + smallRupturesPerSecond()
 					+ bigRupturesPerSecond() + smallEvisceratesPerSecond()
 					+ bigEvisceratesPerSecond()
 					+ KillingSpree.hitsPerSecond(this)
 					+ TinyAbomination.mainHandProcs(this);
 		if (offHand.weapon.hackAndSlash())
-			eligibleHitsPerSecond += offHand.baseHitsPerSecond(this)
+			eligibleHitsPerSecond += offHand.autoAttackHitsPerSecond(this)
 					+ KillingSpree.hitsPerSecond(this)
 					+ TinyAbomination.offHandProcs(this);
 		return 0.01 * hackAndSlash() * eligibleHitsPerSecond;
@@ -195,7 +195,7 @@ public class Character {
 	}
 
 	public double rawWhiteDPS() {
-		return mainHand.rawPhysicalDPS(this) + offHand.rawPhysicalDPS(this)
+		return mainHand.rawAutoAttackDPS(this) + offHand.rawAutoAttackDPS(this)
 				+ rawHackAndSlashDPS() + rawSinisterStrikeDPS()
 				+ rawEviscerateDPS() + KillingSpree.rawDPS(this)
 				+ TinyAbomination.rawDPS(this);
