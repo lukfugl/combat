@@ -39,8 +39,9 @@ public class Character {
 
 	private double physicalDPS() {
 		return mainHand.physicalDPS(this) + offHand.physicalDPS(this)
-				+ ruptureDPS() + sinisterStrikeDPS() + eviscerateDPS()
-				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
+				+ ruptureDPS() + hackAndSlashDPS() + sinisterStrikeDPS()
+				+ eviscerateDPS() + KillingSpree.dps(this)
+				+ TinyAbomination.dps(this);
 	}
 
 	// B7
@@ -104,6 +105,51 @@ public class Character {
 		return 7930.01;
 	}
 
+	// B826
+	public double totalSpeedMultiplier() {
+		// TODO: EXPAND
+		return 2.35;
+	}
+
+	public double hackAndSlashSwingsPerSecond() {
+		double eligibleHitsPerSecond = 0;
+		if (mainHand.weapon.hackAndSlash())
+			eligibleHitsPerSecond += mainHand.baseHitsPerSecond(this)
+					+ sinisterStrikesPerSecond() + smallRupturesPerSecond()
+					+ bigRupturesPerSecond() + smallEvisceratesPerSecond()
+					+ bigEvisceratesPerSecond()
+					+ KillingSpree.hitsPerSecond(this)
+					+ TinyAbomination.mainHandProcs(this);
+		if (offHand.weapon.hackAndSlash())
+			eligibleHitsPerSecond += offHand.baseHitsPerSecond(this)
+					+ KillingSpree.hitsPerSecond(this)
+					+ TinyAbomination.offHandProcs(this);
+		return 0.01 * hackAndSlash() * eligibleHitsPerSecond;
+	}
+
+	public double rawHackAndSlashDPS() {
+		return hackAndSlashSwingsPerSecond() * mainHand.baseDamage(this)
+				* mainHand.whiteMultiplier(this)
+				* (1 + 0.2 * KillingSpree.uptime())
+				* mainHand.averageMitigation(this) * bloodFrenzy() * hysteria();
+	}
+
+	private double hackAndSlashDPS() {
+		return ferociousInspiration() * rawHackAndSlashDPS();
+	}
+
+	// B935
+	public double bigEvisceratesPerSecond() {
+		// TODO: EXPAND
+		return (double) 0;
+	}
+
+	// B934
+	public double smallEvisceratesPerSecond() {
+		// TODO: EXPAND
+		return 0.06;
+	}
+
 	// ... * B971
 	private double rawEviscerateDPS() {
 		// TODO: EXPAND
@@ -113,6 +159,12 @@ public class Character {
 
 	private double eviscerateDPS() {
 		return ferociousInspiration() * rawEviscerateDPS();
+	}
+
+	// B931
+	public double sinisterStrikesPerSecond() {
+		// TODO: EXPAND
+		return 0.37;
 	}
 
 	// ... * B961
@@ -126,14 +178,27 @@ public class Character {
 		return ferociousInspiration() * rawSinisterStrikeDPS();
 	}
 
+	// B933
+	public double bigRupturesPerSecond() {
+		// TODO: EXPAND
+		return (double) 0;
+	}
+
+	// B932
+	public double smallRupturesPerSecond() {
+		// TODO: EXPAND
+		return (double) 0;
+	}
+
 	private double ruptureDPS() {
 		return ferociousInspiration() * ruptureRawDPS();
 	}
 
 	public double rawWhiteDPS() {
 		return mainHand.rawPhysicalDPS(this) + offHand.rawPhysicalDPS(this)
-				+ rawSinisterStrikeDPS() + rawEviscerateDPS()
-				+ KillingSpree.rawDPS(this) + TinyAbomination.rawDPS(this);
+				+ rawHackAndSlashDPS() + rawSinisterStrikeDPS()
+				+ rawEviscerateDPS() + KillingSpree.rawDPS(this)
+				+ TinyAbomination.rawDPS(this);
 	}
 
 	// B990
@@ -203,6 +268,12 @@ public class Character {
 
 	// Malice
 	public int malice() {
+		// TODO: EXPAND
+		return 5;
+	}
+
+	// SwordSpec
+	public int hackAndSlash() {
 		// TODO: EXPAND
 		return 5;
 	}

@@ -28,4 +28,11 @@ public abstract class KillingSpree {
 		return 171.53 * character.offHand.averageMitigation(character)
 				* character.bloodFrenzy() * character.hysteria();
 	}
+
+	// B939
+	public static double hitsPerSecond(Character character) {
+		// TODO: EXPAND
+		return 0.07;
+	}
+
 }

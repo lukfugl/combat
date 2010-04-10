@@ -77,7 +77,17 @@ public abstract class WeaponSlot {
 				+ Mongoose.critChance(character, this);
 	}
 
-	public abstract double whiteAttacksPerSecond(Character character);
+	public double whiteAttacksPerSecond(Character character) {
+		return baseAttacksPerSecond(character);
+	}
+
+	public double baseAttacksPerSecond(Character character) {
+		return character.totalSpeedMultiplier() / weapon.speed;
+	}
+
+	public double baseHitsPerSecond(Character character) {
+		return baseAttacksPerSecond(character) * whiteHitChance(character);
+	}
 
 	public abstract double averageMitigation(Character character);
 }

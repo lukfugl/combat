@@ -14,4 +14,8 @@ public class Weapon {
 		this.dps = dps;
 		this.type = type;
 	}
+
+	public boolean hackAndSlash() {
+		return type == WeaponType.Sword || type == WeaponType.Axe;
+	}
 }
