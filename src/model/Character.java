@@ -18,9 +18,9 @@ public class Character {
 		heroicBlackBruise = new BlackBruise(true);
 
 		// B44/B46
-		mainHand = new MainHand(new Weapon(2.6, 205.58, WeaponType.Axe));
+		mainHand = new WeaponSlot(new Weapon(2.6, 205.58, WeaponType.Axe));
 		// B45/B47
-		offHand = new OffHand(new Weapon(1.5, 178.67, WeaponType.Sword));
+		offHand = new WeaponSlot(new Weapon(1.5, 178.67, WeaponType.Sword));
 
 		race = Race.Human;
 	}
@@ -43,9 +43,13 @@ public class Character {
 
 	private double physicalDPS() {
 		return mainHand.autoAttackDPS(this) + offHand.autoAttackDPS(this)
-				+ Rupture.dps(this) + HackAndSlash.dps(this)
+				* offHandPenalty() + Rupture.dps(this) + HackAndSlash.dps(this)
 				+ SinisterStrike.dps(this) + Eviscerate.dps(this)
 				+ KillingSpree.dps(this) + TinyAbomination.dps(this);
+	}
+
+	public double offHandPenalty() {
+		return 0.5 + 0.05 * dualWieldSpecialization();
 	}
 
 	// B7
@@ -117,9 +121,9 @@ public class Character {
 
 	public double rawWhiteDPS() {
 		return mainHand.rawAutoAttackDPS(this) + offHand.rawAutoAttackDPS(this)
-				+ HackAndSlash.rawDPS(this) + SinisterStrike.rawDPS(this)
-				+ Eviscerate.rawDPS(this) + KillingSpree.rawDPS(this)
-				+ TinyAbomination.rawDPS(this);
+				* offHandPenalty() + HackAndSlash.rawDPS(this)
+				+ SinisterStrike.rawDPS(this) + Eviscerate.rawDPS(this)
+				+ KillingSpree.rawDPS(this) + TinyAbomination.rawDPS(this);
 	}
 
 	// B990

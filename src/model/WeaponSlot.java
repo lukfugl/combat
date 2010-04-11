@@ -8,7 +8,7 @@ import trinkets.DeathsVerdict;
 import trinkets.HeroicDeathbringersWill;
 import trinkets.HeroicDeathsVerdict;
 
-public abstract class WeaponSlot {
+public class WeaponSlot {
 	public Weapon weapon;
 
 	public WeaponSlot(Weapon weapon) {
