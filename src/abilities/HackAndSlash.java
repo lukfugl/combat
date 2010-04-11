@@ -1,5 +1,6 @@
 package abilities;
 
+import stats.ArmorPenetration;
 import model.KillingSpree;
 import model.Character;
 import model.TinyAbomination;
@@ -30,8 +31,9 @@ public class HackAndSlash {
 				* character.mainHand.baseDamage(character)
 				* character.mainHand.whiteMultiplier(character)
 				* (1 + 0.2 * KillingSpree.uptime())
-				* character.mainHand.averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
+				* ArmorPenetration.mitigation(character,
+						character.mainHand.weapon) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 
 	public static double dps(Character character) {

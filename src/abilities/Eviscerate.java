@@ -1,5 +1,6 @@
 package abilities;
 
+import stats.ArmorPenetration;
 import model.Character;
 
 public class Eviscerate {
@@ -10,7 +11,8 @@ public class Eviscerate {
 	// ... * B971
 	public static double rawDPS(Character character) {
 		// TODO: EXPAND
-		return character.mainHand.averageMitigation(character)
+		return ArmorPenetration
+				.mitigation(character, character.mainHand.weapon)
 				* character.bloodFrenzy() * character.hysteria() * 752;
 	}
 

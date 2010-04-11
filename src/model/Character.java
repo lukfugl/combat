@@ -192,4 +192,10 @@ public class Character {
 		// TODO: EXPAND
 		return 5;
 	}
+
+	// MaceSpec
+	public int MaceSpecialization() {
+		// TODO: EXPAND
+		return 0;
+	}
 }

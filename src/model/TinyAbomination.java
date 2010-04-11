@@ -1,5 +1,7 @@
 package model;
 
+import stats.ArmorPenetration;
+
 public class TinyAbomination {
 
 	public static double dps(Character character) {
@@ -25,14 +27,18 @@ public class TinyAbomination {
 	// B953 * ...
 	private static double mainHandDPS(Character character) {
 		// TODO: EXPAND
-		return ((double) 0) * character.mainHand.averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
+		return ((double) 0)
+				* ArmorPenetration.mitigation(character,
+						character.mainHand.weapon) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 
 	// B957 * ...
 	private static double offHandDPS(Character character) {
 		// TODO: EXPAND
-		return ((double) 0) * character.offHand.averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
+		return ((double) 0)
+				* ArmorPenetration.mitigation(character,
+						character.offHand.weapon) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 }

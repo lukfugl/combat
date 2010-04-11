@@ -1,5 +1,6 @@
 package model;
 
+import stats.ArmorPenetration;
 import trinkets.DarkMatter;
 import trinkets.DarkmoonCardGreatness;
 import trinkets.DeathbringersWill;
@@ -22,8 +23,8 @@ public abstract class WeaponSlot {
 		return baseDamage(character) * whiteMultiplier(character)
 				* autoAttackSwingsPerSecond(character)
 				* (1 + 0.2 * KillingSpree.uptime())
-				* averageMitigation(character) * character.bloodFrenzy()
-				* character.hysteria();
+				* ArmorPenetration.mitigation(character, weapon)
+				* character.bloodFrenzy() * character.hysteria();
 	}
 
 	public double baseDamage(Character character) {
@@ -81,6 +82,4 @@ public abstract class WeaponSlot {
 	public double autoAttackHitsPerSecond(Character character) {
 		return autoAttackSwingsPerSecond(character) * whiteHitChance(character);
 	}
-
-	public abstract double averageMitigation(Character character);
 }

@@ -13,10 +13,4 @@ public class OffHand extends WeaponSlot {
 	public double offHandPenalty(Character character) {
 		return 0.5 + 0.05 * character.dualWieldSpecialization();
 	}
-
-	// B1073
-	public double averageMitigation(Character character) {
-		// TODO: EXPAND
-		return 0.74;
-	}
 }

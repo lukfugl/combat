@@ -1,5 +1,6 @@
 package abilities;
 
+import stats.ArmorPenetration;
 import model.Character;
 
 public class SinisterStrike {
@@ -10,7 +11,8 @@ public class SinisterStrike {
 	// ... * B961
 	public static double rawDPS(Character character) {
 		// TODO: EXPAND
-		return character.mainHand.averageMitigation(character)
+		return ArmorPenetration
+				.mitigation(character, character.mainHand.weapon)
 				* character.bloodFrenzy() * character.hysteria() * 1983.67;
 	}
 

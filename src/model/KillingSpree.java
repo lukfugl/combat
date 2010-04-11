@@ -1,5 +1,7 @@
 package model;
 
+import stats.ArmorPenetration;
+
 public abstract class KillingSpree {
 	// B941
 	public static double uptime() {
@@ -18,15 +20,19 @@ public abstract class KillingSpree {
 	// B984 * ...
 	private static double mainHandDPS(Character character) {
 		// TODO: EXPAND
-		return 266.15 * character.mainHand.averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
+		return 266.15
+				* ArmorPenetration.mitigation(character,
+						character.mainHand.weapon) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 
 	// B985 * ...
 	private static double offHandDPS(Character character) {
 		// TODO: EXPAND
-		return 171.53 * character.offHand.averageMitigation(character)
-				* character.bloodFrenzy() * character.hysteria();
+		return 171.53
+				* ArmorPenetration.mitigation(character,
+						character.offHand.weapon) * character.bloodFrenzy()
+				* character.hysteria();
 	}
 
 	// B939
