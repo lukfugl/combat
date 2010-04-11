@@ -43,7 +43,7 @@ public class WeaponSlot {
 	}
 
 	public double dodgeChance(Character character) {
-		return Math.max(6.5 - 0.25 * character.expertise(this.weapon), 0);
+		return Math.max(6.5 - 0.25 * character.expertise(weapon), 0);
 	}
 
 	public double whiteCritChance(Character character) {
@@ -52,7 +52,7 @@ public class WeaponSlot {
 	}
 
 	public double baseWhiteCritChance(Character character) {
-		return Math.min(character.whiteCritChanceNoAgility(this.weapon)
+		return Math.min(character.whiteCritChanceNoAgility(weapon)
 				+ character.whiteCritChanceFromAgility(),
 				whiteCritCap(character));
 	}
