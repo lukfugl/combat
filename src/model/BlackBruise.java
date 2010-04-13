@@ -11,11 +11,11 @@ public class BlackBruise {
 		if (heroic) {
 			// TODO: EXPAND
 			// B1076
-			return (double) 0;
+			return 0;
 		} else {
 			// TODO: EXPAND
 			// B1075
-			return (double) 0;
+			return 0;
 		}
 	}
 

@@ -9,13 +9,13 @@ public class Mongoose {
 		// TODO: EXPAND
 		switch (stacks) {
 		case 0:
-			return (double) 1; // B721
+			return 1; // B721
 		case 1:
-			return (double) 0; // B722
+			return 0; // B722
 		case 2:
-			return (double) 0; // B723
+			return 0; // B723
 		default:
-			return (double) 0;
+			return 0;
 		}
 	}
 

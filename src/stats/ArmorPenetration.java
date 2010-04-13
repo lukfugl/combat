@@ -13,49 +13,49 @@ public class ArmorPenetration {
 	// B1047
 	public static double allProcsUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1046
 	public static double runestoneAndScorpionUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1045
 	public static double grimTollAndScorpionUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1044
 	public static double grimTollAndRunestoneUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1043
 	public static double scorpionOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1042
 	public static double runestoneOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1041
 	public static double grimTollOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1040
 	public static double noProcsUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 1;
+		return 1;
 	}
 
 	// B73/B9

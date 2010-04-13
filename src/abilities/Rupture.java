@@ -10,18 +10,18 @@ public class Rupture {
 	// B1080
 	public static double rawDPS(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B933
 	public static double bigHitsPerSecond(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B932
 	public static double littleHitsPerSecond(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 }

@@ -25,6 +25,6 @@ public class Eviscerate {
 	// B935
 	public static double bigHitsPerSecond(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 }
