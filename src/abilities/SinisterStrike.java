@@ -12,7 +12,7 @@ public class SinisterStrike {
 	public static double rawDPS(Character character) {
 		// TODO: EXPAND
 		return ArmorPenetration
-				.mitigation(character, character.mainHand.weapon)
+				.mitigation(character, character.mainHand)
 				* character.bloodFrenzy() * character.hysteria() * 1983.67;
 	}
 

@@ -1,34 +1,80 @@
 package model;
 
-public class Mongoose {
-	public static double baseCritChance(Character character) {
-		return 120 * 3 / 250.0 * character.kings();
+public class Mongoose extends Enchant {
+	private Weapon weapon;
+	private boolean mainHand;
+
+	public Mongoose(Weapon weapon, boolean mainHand) {
+		this.weapon = weapon;
+		this.mainHand = mainHand;
 	}
 
-	public static double uptime(Character character, int stacks) {
+	public double baseAgility(Character character) {
+		return 120 * character.kings();
+	}
+
+	public double baseCritChance(Character character) {
+		return character.agilityToCritChance(baseAgility(character));
+	}
+
+	// B673/B674
+	public double uptime(Character character) {
+		// 1 - procChance is the chance it doesn't proc on any given hit.
+		// hitsPerSecond * 15 is the number of hits in the preceding 15 seconds.
+		// the one raised to the other is the probability of no procs in the
+		// preceding 15 seconds. so 1 - that is the probability there was at
+		// least one proc in the preceding 15 seconds, and thus that the buff
+		// would be active.
+		return (1 - Math.pow(1 - procChance(), hitsPerSecond(character) * 15));
+	}
+
+	private double hitsPerSecond(Character character) {
+		double hitsPerSecond = autoAttackHitsPerSecond(character)
+				+ abomHitsPerSecond(character);
+		if (mainHand)
+			hitsPerSecond += yellowHitsPerSecond(character)
+					+ hackAndSlashHitsPerSecond(character);
+		return hitsPerSecond;
+	}
+
+	// B669
+	private double yellowHitsPerSecond(Character character) {
 		// TODO: EXPAND
-		switch (stacks) {
-		case 0:
-			return (double) 1; // B721
-		case 1:
-			return (double) 0; // B722
-		case 2:
-			return (double) 0; // B723
-		default:
-			return (double) 0;
-		}
+		return 0.48;
 	}
 
-	public static double critChance(Character character, WeaponSlot hand) {
-		double chance = 0;
-		for (int i = 0; i <= 2; i++)
-			chance += critChanceN(character, hand, i) * uptime(character, i);
-		return chance;
+	// B670
+	private double hackAndSlashHitsPerSecond(Character character) {
+		// TODO: EXPAND
+		return 0.12;
 	}
 
-	public static double critChanceN(Character character, WeaponSlot hand,
-			int stacks) {
-		return Math.min(stacks * baseCritChance(character), hand
-				.critCapRoom(character));
+	// B660/B661
+	private double abomHitsPerSecond(Character character) {
+		// TODO: EXPAND
+		if (mainHand)
+			return 0;
+		else
+			return 0;
+	}
+
+	private double procChance() {
+		// normalized to average 1 PPM from unhasted auto attacks
+		return weapon.speed / 60;
+	}
+
+	private double autoAttackSwingsPerSecond(Character character) {
+		return passiveSpeedMultiplier(character) / weapon.speed;
+	}
+
+	private double autoAttackHitsPerSecond(Character character) {
+		return autoAttackSwingsPerSecond(character)
+				* character.whiteHitChance(weapon);
+	}
+
+	// B552
+	private double passiveSpeedMultiplier(Character charater) {
+		// TODO: EXPAND
+		return 2.19;
 	}
 }

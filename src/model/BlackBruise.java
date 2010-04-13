@@ -11,11 +11,11 @@ public class BlackBruise {
 		if (heroic) {
 			// TODO: EXPAND
 			// B1076
-			return (double) 0;
+			return 0;
 		} else {
 			// TODO: EXPAND
 			// B1075
-			return (double) 0;
+			return 0;
 		}
 	}
 
@@ -31,6 +31,6 @@ public class BlackBruise {
 
 	public double magicalDPS(Character character, Target target) {
 		return character.ferociousInspiration() * target.magicSuppression()
-				* multiplier() * uptime(character) * character.rawWhiteDPS();
+				* multiplier() * uptime(character) * character.rawWhiteDPS(target);
 	}
 }

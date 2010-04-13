@@ -8,11 +8,13 @@ import model.Weapon.WeaponType;
 public class Race {
 	private Collection<WeaponType> favoredWeapons;
 	private int expertiseFromFavoredWeapon;
+	private int agility;
 
 	public Race(Collection<WeaponType> favoredWeapons,
-			int expertiseFromFavoredWeapon) {
+			int expertiseFromFavoredWeapon, int agility) {
 		this.favoredWeapons = new ArrayList<WeaponType>(favoredWeapons);
 		this.expertiseFromFavoredWeapon = expertiseFromFavoredWeapon;
+		this.agility = agility;
 	}
 
 	public int expertise(Weapon weapon) {
@@ -21,7 +23,11 @@ public class Race {
 		else
 			return 0;
 	}
+	
+	public int agility() {
+		return agility;
+	}
 
 	public static final Race Human = new Race(List(WeaponType.Sword,
-			WeaponType.Mace), 3);
+			WeaponType.Mace), 3, 189);
 }

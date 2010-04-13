@@ -22,7 +22,7 @@ public abstract class KillingSpree {
 		// TODO: EXPAND
 		return 266.15
 				* ArmorPenetration.mitigation(character,
-						character.mainHand.weapon) * character.bloodFrenzy()
+						character.mainHand) * character.bloodFrenzy()
 				* character.hysteria();
 	}
 
@@ -31,7 +31,7 @@ public abstract class KillingSpree {
 		// TODO: EXPAND
 		return 171.53
 				* ArmorPenetration.mitigation(character,
-						character.offHand.weapon) * character.bloodFrenzy()
+						character.offHand) * character.bloodFrenzy()
 				* character.hysteria();
 	}
 

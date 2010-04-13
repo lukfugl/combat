@@ -15,30 +15,30 @@ public class TinyAbomination {
 	// B929
 	public static double mainHandProcs(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B930
 	public static double offHandProcs(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B953 * ...
 	private static double mainHandDPS(Character character) {
 		// TODO: EXPAND
-		return ((double) 0)
+		return (0)
 				* ArmorPenetration.mitigation(character,
-						character.mainHand.weapon) * character.bloodFrenzy()
+						character.mainHand) * character.bloodFrenzy()
 				* character.hysteria();
 	}
 
 	// B957 * ...
 	private static double offHandDPS(Character character) {
 		// TODO: EXPAND
-		return ((double) 0)
+		return (0)
 				* ArmorPenetration.mitigation(character,
-						character.offHand.weapon) * character.bloodFrenzy()
+						character.offHand) * character.bloodFrenzy()
 				* character.hysteria();
 	}
 }

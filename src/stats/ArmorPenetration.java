@@ -13,59 +13,54 @@ public class ArmorPenetration {
 	// B1047
 	public static double allProcsUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1046
 	public static double runestoneAndScorpionUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1045
 	public static double grimTollAndScorpionUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1044
 	public static double grimTollAndRunestoneUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1043
 	public static double scorpionOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1042
 	public static double runestoneOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1041
 	public static double grimTollOnlyUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 0;
+		return 0;
 	}
 
 	// B1040
 	public static double noProcsUptime(Character character) {
 		// TODO: EXPAND
-		return (double) 1;
-	}
-
-	// B73/B9
-	public static int armorPenetrationFromGear() {
-		return 468;
+		return 1;
 	}
 
 	public static double allProcsMitigation(Character character, Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear() + GrimToll.armorPenetration()
+				character.gear.armorPenetration + GrimToll.armorPenetration()
 						+ MjolnirRunestone.armorPenetration()
 						+ NeedleEncrustedScorpion.armorPenetration());
 	}
@@ -73,7 +68,7 @@ public class ArmorPenetration {
 	public static double runestoneAndScorpionMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear()
+				character.gear.armorPenetration
 						+ MjolnirRunestone.armorPenetration()
 						+ NeedleEncrustedScorpion.armorPenetration());
 	}
@@ -81,40 +76,40 @@ public class ArmorPenetration {
 	public static double grimTollAndScorpionMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear() + GrimToll.armorPenetration()
+				character.gear.armorPenetration + GrimToll.armorPenetration()
 						+ NeedleEncrustedScorpion.armorPenetration());
 	}
 
 	public static double grimTollAndRunestoneMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear() + GrimToll.armorPenetration()
+				character.gear.armorPenetration + GrimToll.armorPenetration()
 						+ MjolnirRunestone.armorPenetration());
 	}
 
 	public static double scorpionOnlyMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear()
+				character.gear.armorPenetration
 						+ NeedleEncrustedScorpion.armorPenetration());
 	}
 
 	public static double runestoneOnlyMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear()
+				character.gear.armorPenetration
 						+ MjolnirRunestone.armorPenetration());
 	}
 
 	public static double grimTollOnlyMitigation(Character character,
 			Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear() + GrimToll.armorPenetration());
+				character.gear.armorPenetration + GrimToll.armorPenetration());
 	}
 
 	public static double noProcsMitigation(Character character, Weapon weapon) {
 		return mitigationFromArmorPenetration(character, weapon,
-				armorPenetrationFromGear());
+				character.gear.armorPenetration);
 	}
 
 	// B1073
@@ -140,7 +135,7 @@ public class ArmorPenetration {
 			Weapon weapon, int armorPenetration) {
 		double fractionIgnored = 1.1 * armorPenetration / 1539.529991;
 		if (weapon.type == WeaponType.Mace)
-			fractionIgnored += 0.03 * character.MaceSpecialization();
+			fractionIgnored += 0.03 * character.talents.maceSpecialization;
 		fractionIgnored = Math.min(fractionIgnored, 1.00);
 		return 15232.5 / (15232.5 + B121 - fractionIgnored * B122);
 	}
