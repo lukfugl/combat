@@ -11,8 +11,7 @@ public class Eviscerate {
 	// ... * B971
 	public static double rawDPS(Character character) {
 		// TODO: EXPAND
-		return ArmorPenetration
-				.mitigation(character, character.mainHand.weapon)
+		return ArmorPenetration.mitigation(character, character.mainHand)
 				* character.bloodFrenzy() * character.hysteria() * 752;
 	}
 

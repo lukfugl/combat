@@ -2,7 +2,7 @@ package trinkets;
 
 import model.Character;
 import model.Trinket;
-import model.WeaponSlot;
+import model.Weapon;
 
 public class DeathbringersWill extends Trinket {
 	// B737
@@ -19,7 +19,7 @@ public class DeathbringersWill extends Trinket {
 		return 0;
 	}
 
-	static public double critChance(Character character, WeaponSlot hand) {
-		return (new DeathbringersWill()).averageCritChance(character, hand);
+	static public double critChance(Character character, Weapon weapon) {
+		return (new DeathbringersWill()).averageCritChance(character, weapon);
 	}
 }

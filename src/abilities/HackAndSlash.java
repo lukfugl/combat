@@ -8,7 +8,7 @@ import model.TinyAbomination;
 public class HackAndSlash {
 	public static double swingsPerSecond(Character character) {
 		double eligibleHitsPerSecond = 0;
-		if (character.mainHand.weapon.hackAndSlash())
+		if (character.mainHand.hackAndSlash())
 			eligibleHitsPerSecond += character.mainHand
 					.autoAttackHitsPerSecond(character)
 					+ SinisterStrike.hitsPerSecond(character)
@@ -18,7 +18,7 @@ public class HackAndSlash {
 					+ Eviscerate.bigHitsPerSecond(character)
 					+ KillingSpree.hitsPerSecond(character)
 					+ TinyAbomination.mainHandProcs(character);
-		if (character.offHand.weapon.hackAndSlash())
+		if (character.offHand.hackAndSlash())
 			eligibleHitsPerSecond += character.offHand
 					.autoAttackHitsPerSecond(character)
 					+ KillingSpree.hitsPerSecond(character)
@@ -31,9 +31,8 @@ public class HackAndSlash {
 				* character.mainHand.baseDamage(character)
 				* character.mainHand.whiteMultiplier(character)
 				* (1 + 0.2 * KillingSpree.uptime())
-				* ArmorPenetration.mitigation(character,
-						character.mainHand.weapon) * character.bloodFrenzy()
-				* character.hysteria();
+				* ArmorPenetration.mitigation(character, character.mainHand)
+				* character.bloodFrenzy() * character.hysteria();
 	}
 
 	public static double dps(Character character) {

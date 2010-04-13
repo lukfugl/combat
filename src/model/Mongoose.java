@@ -19,16 +19,16 @@ public class Mongoose {
 		}
 	}
 
-	public static double critChance(Character character, WeaponSlot hand) {
+	public static double critChance(Character character, Weapon weapon) {
 		double chance = 0;
 		for (int i = 0; i <= 2; i++)
-			chance += critChanceN(character, hand, i) * uptime(character, i);
+			chance += critChanceN(character, weapon, i) * uptime(character, i);
 		return chance;
 	}
 
-	public static double critChanceN(Character character, WeaponSlot hand,
+	public static double critChanceN(Character character, Weapon weapon,
 			int stacks) {
-		return Math.min(stacks * baseCritChance(character), hand
+		return Math.min(stacks * baseCritChance(character), weapon
 				.critCapRoom(character));
 	}
 }

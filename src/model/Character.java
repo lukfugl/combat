@@ -9,8 +9,8 @@ import model.Weapon.WeaponType;
 public class Character {
 	private BlackBruise blackBruise;
 	private BlackBruise heroicBlackBruise;
-	public WeaponSlot mainHand;
-	public WeaponSlot offHand;
+	public Weapon mainHand;
+	public Weapon offHand;
 	Race race;
 
 	public Character() {
@@ -18,9 +18,9 @@ public class Character {
 		heroicBlackBruise = new BlackBruise(true);
 
 		// B44/B46
-		mainHand = new WeaponSlot(new Weapon(2.6, 205.58, WeaponType.Axe));
+		mainHand = new Weapon(2.6, 205.58, WeaponType.Axe);
 		// B45/B47
-		offHand = new WeaponSlot(new Weapon(1.5, 178.67, WeaponType.Sword));
+		offHand = new Weapon(1.5, 178.67, WeaponType.Sword);
 
 		race = Race.Human;
 	}
